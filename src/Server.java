@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Server {
 
+	//run: run as java aplication
+	
 	private static HashMap<String, Client> clients = new HashMap<String, Client>(13);
 	
 	//private static LinkedList<ClientThread> threads = new LinkedList<>();
@@ -16,7 +18,7 @@ public class Server {
 
 		ServerSocket ss = new ServerSocket(1234);
 
-		System.out.println("ServerSocket awaiting connections...");
+		System.out.println("Server awaiting connections...");
 			
 		while( !ss.isClosed() )
 		{
@@ -32,22 +34,25 @@ public class Server {
 			if( !clients.containsKey(client.getID() ) )
 			{
 				clients.put( client.getID(), client);
+				
+				//here
+				//create this ClientThread
+				
+				ClientThread ct = new ClientThread( client );
+				ct.start();
+				
 			}
 			else
 			{
 				System.err.println("That client is on the server already.");
 			}
 
-			System.out.println("Clientes: " + clients.size() );
+			System.out.println("Number of clients: " + clients.size() );
 			
 			for( Client c : clients.values() )
 			{
 				System.out.println( c );
 			}
-		}
-
-		// System.out.println("Closing sockets.");
-		// ss.close();
-		// socket.close();
+		}		
 	}
 }
