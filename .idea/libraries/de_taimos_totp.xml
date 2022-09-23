@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="de.taimos.totp" type="repository">
+    <properties maven-id="de.taimos:totp:1.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/taimos/totp/1.0/totp-1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.8/commons-codec-1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

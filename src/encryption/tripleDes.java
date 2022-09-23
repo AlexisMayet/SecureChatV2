@@ -1,3 +1,5 @@
+package encryption;
+
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.*;
@@ -40,7 +42,7 @@ public class tripleDes{
     // Initialize a secret key.
     SecretKey Key;
 
-    // Generate a constructor for the tripleDes Class.
+    // Generate a constructor for the encryption.tripleDes Class.
     public tripleDes() throws Exception{
 
         encryptionKey = "This is a secret";

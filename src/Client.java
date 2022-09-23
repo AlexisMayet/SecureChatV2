@@ -1,15 +1,15 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Client implements Serializable {
 
@@ -55,6 +55,15 @@ public class Client implements Serializable {
 		}
 	}
 
+	public static String getFile() {
+		JFrame chooser_f = new JFrame();
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON files", "json", "JSON");
+		chooser.setFileFilter(filter);
+		chooser.showOpenDialog(chooser_f);
+		return chooser.getSelectedFile().getPath();
+	}
+
 	public static void main(String[] args) throws IOException {
 
 		// Previous
@@ -63,7 +72,8 @@ public class Client implements Serializable {
 		// Client client = new Client(socket, "Pepe");
 		// -------------------------------------------------
 
-		String filename = args[0];
+
+		String filename = getFile();
 
 		JsonParser jsonParser = new JsonParser();
 
@@ -93,7 +103,7 @@ public class Client implements Serializable {
 			// data
 			JsonArray jsaSteps = jsoActions.getAsJsonArray("steps");
 
-			String actions = "";
+			StringBuilder actions = new StringBuilder();
 
 			for (JsonElement e : jsaSteps) {
 
@@ -107,58 +117,93 @@ public class Client implements Serializable {
 
 				String a = op + " " + amount;
 
-				actions += a + ",";
+				actions.append(a).append(",");
 			}
 
-			// donde dice localhost es la IP: localhost es 127.0.0.1 y 1234 es el port
 			Socket socket = new Socket(ipServer, portServer);
-			// Para no usar metodos publicos al crear el cliente, se crea con toda la info
-			// del json
-			Client client = new Client(id, pass, delay, actions);
 
-			// Grabar un objeto en el socket
+			Client client = new Client(id, pass, delay, actions.toString());
+
 			OutputStream outputStream = socket.getOutputStream();
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 			objectOutputStream.writeObject(client);
 
-			counter_method();
+
+			InputStream inputStream = socket.getInputStream();
+			ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+
+			Output outA = (Output) objectInputStream.readObject();
+			System.out.println(outA.getStatus_description());
+			if (outA.getStatus() == Status.OFFLINE)
+				System.exit(0);
+
+			objectOutputStream.writeObject(twoFac());
+
+
+			//counter_method();    DISABLED
+
+
 			// client.listenForMessage();
 			// client.sendMessage();
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (JsonParseException e) {
+			Output outB = (Output) objectInputStream.readObject();
+			System.out.println(outB.getStatus_description());
+			if (outB.getStatus() == Status.OFFLINE)
+				System.exit(0);
+
+
+		} catch (IOException | JsonParseException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public String getID() {
 
 		return username;
 	}
-	public static void counter_method(){
+/*
+	public static void counter_method() {
 		Scanner value = new Scanner(System.in);
 		while (true) {
 			boolean name = test();
-			if(name) {
+			if (name) {
 				System.out.println("How much do you want to increase ");
 				double value_1 = value.nextDouble();
 				Server.counter += value_1;
 				System.out.println("The counter:" + Server.counter);
-			}
-			else {
+			} else {
 				System.out.println("How much do you want to decrease ");
 				double value_1 = value.nextDouble();
 				Server.counter = Server.counter - value_1;
 				System.out.println("The counter is equal to : " + Server.counter);
 			}
+		}
+	}
+*/
+	public String getPassword() {
+		return password;
+	}
 
+	public static String twoFac() {
+		Scanner scanner = new Scanner(System.in);
+		String s = "";
+		System.out.print("Please input your two factor authentication code:\t");
+		while (scanner.hasNextLine()) {
+			s = scanner.nextLine();
+			if (!Objects.equals(s, ""))
+				break;
+		}
+
+		return s;
+	}
+}
+	/*
 			if(test2())
 				return;
 		}
 	}
+
 	public static  boolean test(){
 		while(true) {
 			Scanner increase_or_decrease = new Scanner(System.in);
