@@ -122,7 +122,9 @@ public class Client implements Serializable {
 			// data
 			String sDelay = jsoActions.get("delay").getAsString();
 
-			int delay = Integer.parseInt(sDelay);
+			int delay = Integer.parseInt(sDelay) * 1000;
+
+
 
 			// data
 			JsonArray jsaSteps = jsoActions.getAsJsonArray("steps");
@@ -145,9 +147,11 @@ public class Client implements Serializable {
 
 			// donde dice localhost es la IP: localhost es 127.0.0.1 y 1234 es el port
 			Socket socket = new Socket(ipServer, portServer);
+
+
 			Client client = new Client(id, pass, delay, actions);
 
-			Client client = new Client(id, pass, delay, actions.toString());
+
 
 			OutputStream outputStream = socket.getOutputStream();
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
@@ -163,13 +167,6 @@ public class Client implements Serializable {
 				System.exit(0);
 
 			objectOutputStream.writeObject(twoFac());
-
-
-			//counter_method();    DISABLED
-
-
-			// client.listenForMessage();
-			// client.sendMessage();
 
 			Output outB = (Output) objectInputStream.readObject();
 			System.out.println(outB.getStatus_description());

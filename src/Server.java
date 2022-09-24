@@ -15,8 +15,6 @@ public class Server {
 	//run: run as java aplication
 
 	private static HashMap<String, Client> clients = new HashMap<String, Client>(13);
-	
-	//private static LinkedList<ClientThread> threads = new LinkedList<>();
 
 	private static ArrayList<User> users = new ArrayList<>();
 
@@ -88,7 +86,7 @@ public class Server {
 
 		try {
 			generate_users();
-		}catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("Failed to read users.\nShutting down server.");
 			System.exit(0);
 		}
@@ -96,54 +94,48 @@ public class Server {
 		ServerSocket ss = new ServerSocket(1234);
 
 		System.out.println("Server awaiting connections...");
-			
-		while(true)
-		{
+
+		while (true) {
 			Socket socket = ss.accept();
-		
+
 			System.out.println("Connection from " + socket + "!");
 
-			InputStream inputStream = socket.getInputStream();
-			OutputStream outputStream = socket.getOutputStream();
-			ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+			ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 
 			Client client = (Client) objectInputStream.readObject();
 
-			if(!check_id(client))
-			{
-				objectOutputStream.writeObject(new Output(Status.OFFLINE,"User not found."));
+			if (!check_id(client)) {
+				objectOutputStream.writeObject(new Output(Status.OFFLINE, "User not found."));
 				System.out.println("Closing socket for user: " + socket + "\nReason: User not found.");
 
-			}
-			else if(!check_password(client))
-			{
-				objectOutputStream.writeObject(new Output(Status.OFFLINE,"Password do not match."));
+			} else if (!check_password(client)) {
+				objectOutputStream.writeObject(new Output(Status.OFFLINE, "Password do not match."));
 				System.out.println("Closing socket for user: " + socket + "\nReason: Password do not match.");
-
-				//ClientThread ct = new ClientThread( client );
-				//ct.start();
+			}else if (clients.containsKey(client.getID())) {
+				objectOutputStream.writeObject(new Output(Status.OFFLINE, "Client already active on the server."));
+				System.out.println("Closing socket for user: " + socket + "\nReason: Client already active on the server.");
 			}
 			else {
-				objectOutputStream.writeObject(new Output(Status.IDLE,"Correct password."));
-				if(Objects.equals(objectInputStream.readObject(),generateNum(client)))
-					objectOutputStream.writeObject(new Output(Status.IDLE,"Login successful.\nProceed with the action."));
+				objectOutputStream.writeObject(new Output(Status.IDLE, "Correct password."));
+				if (Objects.equals(objectInputStream.readObject(), generateNum(client)))
+					objectOutputStream.writeObject(new Output(Status.IDLE, "Login successful.\nProceed with the action."));
 				else
-					objectOutputStream.writeObject(new Output(Status.OFFLINE,"Login unsuccessful."));
+					objectOutputStream.writeObject(new Output(Status.OFFLINE, "Login unsuccessful."));
+
+				clients.put(client.getID(), client);
+
+
+				ClientThread ct = new ClientThread( client );
+				ct.start();
 
 
 
-				if (!clients.containsKey(client.getID())) {
-					clients.put(client.getID(), client);
-				} else {
-					System.err.println("That client is on the server already.");
+				System.out.println("Number of clients: " + clients.size());
+
+				for (Client c : clients.values()) {
+					System.out.println(c);
 				}
-
-			System.out.println("Number of clients: " + clients.size() );
-			
-			for( Client c : clients.values() )
-			{
-				System.out.println( c );
 			}
 		}
 	}

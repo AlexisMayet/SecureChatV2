@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56f3a841-0724-4915-84a5-723e5a82068c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_codec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/de_taimos_totp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_zxing_javase.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Output.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecureChatV2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SecureChatV2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/SecureChatV2/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/SecureChatV2/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/client.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client2.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/client2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/client2.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/client2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientThreat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +71,7 @@
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="SecureChatV2" />
@@ -101,8 +92,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -117,12 +108,36 @@
       <workItem from="1663777200402" duration="32000" />
       <workItem from="1663777296108" duration="967000" />
       <workItem from="1663778779681" duration="1819000" />
-      <workItem from="1663799960070" duration="17442000" />
+      <workItem from="1663799960070" duration="17933000" />
+      <workItem from="1664026839230" duration="307000" />
     </task>
+    <task id="LOCAL-00001" summary="Login system created and functional.&#10;Require the addition of three new libraries that can be found in the lib directory.">
+      <created>1663944673722</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663944673722</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Login system created and functional.&#10;Require the addition of three new libraries that can be found in the lib directory." />
+    <option name="LAST_COMMIT_MESSAGE" value="Login system created and functional.&#10;Require the addition of three new libraries that can be found in the lib directory." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
