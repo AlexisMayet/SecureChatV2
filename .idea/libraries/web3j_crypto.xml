@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="web3j.crypto" type="repository">
+    <properties maven-id="org.web3j:crypto:4.5.11" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/crypto-4.5.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/abi-4.5.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/rlp-4.5.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/utils-4.5.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk15on-1.61.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.8.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

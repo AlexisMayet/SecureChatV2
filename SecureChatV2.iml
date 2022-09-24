@@ -13,5 +13,6 @@
     <orderEntry type="library" name="de.taimos.totp" level="project" />
     <orderEntry type="library" name="commons.codec" level="project" />
     <orderEntry type="library" name="google.zxing.javase" level="project" />
+    <orderEntry type="library" name="web3j.crypto" level="project" />
   </component>
 </module>
