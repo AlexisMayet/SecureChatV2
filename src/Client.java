@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.Socket;
 import java.util.*;
+import java.util.StringTokenizer;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -21,11 +22,16 @@ public class Client implements Serializable {
 	private String password;
 	private int delay;
 	private String actions;
+	private int counter;
 
 	@Override
 	public String toString() {
 		return "Client [username=" + username + ", password=" + password + ", delay=" + delay + ", actions=" + actions
 				+ "]";
+	}
+	public String getActions()
+	{
+		return actions;
 	}
 
 	public Client(String username, String password, int delay, String actions) {
@@ -34,6 +40,24 @@ public class Client implements Serializable {
 		this.password = password;
 		this.delay = delay;
 		this.actions = actions;
+		this.counter = 0;
+	}
+
+	public int getDelay()
+	{
+		return delay;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void increaseCounter(int amount) {
+		counter += amount;
+	}
+
+	public void decreaseCounter(int amount) {
+		counter -= amount;
 	}
 
 	public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
@@ -103,7 +127,7 @@ public class Client implements Serializable {
 			// data
 			JsonArray jsaSteps = jsoActions.getAsJsonArray("steps");
 
-			StringBuilder actions = new StringBuilder();
+			String actions = "";
 
 			for (JsonElement e : jsaSteps) {
 
@@ -116,11 +140,12 @@ public class Client implements Serializable {
 				int amount = Integer.parseInt(st.nextToken());
 
 				String a = op + " " + amount;
-
-				actions.append(a).append(",");
+				actions += a + ",";
 			}
 
+			// donde dice localhost es la IP: localhost es 127.0.0.1 y 1234 es el port
 			Socket socket = new Socket(ipServer, portServer);
+			Client client = new Client(id, pass, delay, actions);
 
 			Client client = new Client(id, pass, delay, actions.toString());
 

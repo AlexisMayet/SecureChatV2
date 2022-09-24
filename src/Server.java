@@ -12,6 +12,8 @@ import java.util.*;
 
 public class Server {
 
+	//run: run as java aplication
+
 	private static HashMap<String, Client> clients = new HashMap<String, Client>(13);
 	
 	//private static LinkedList<ClientThread> threads = new LinkedList<>();
@@ -81,7 +83,7 @@ public class Server {
 
 		return Objects.equals(user.getPassword(), client.getPassword());
 	}
-	
+
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		try {
@@ -93,7 +95,7 @@ public class Server {
 
 		ServerSocket ss = new ServerSocket(1234);
 
-		System.out.println("ServerSocket awaiting connections...");
+		System.out.println("Server awaiting connections...");
 			
 		while(true)
 		{
@@ -118,6 +120,9 @@ public class Server {
 			{
 				objectOutputStream.writeObject(new Output(Status.OFFLINE,"Password do not match."));
 				System.out.println("Closing socket for user: " + socket + "\nReason: Password do not match.");
+
+				//ClientThread ct = new ClientThread( client );
+				//ct.start();
 			}
 			else {
 				objectOutputStream.writeObject(new Output(Status.IDLE,"Correct password."));
@@ -134,16 +139,12 @@ public class Server {
 					System.err.println("That client is on the server already.");
 				}
 
-				System.out.println("Clientes: " + clients.size());
-
-				for (Client c : clients.values()) {
-					System.out.println(c);
-				}
+			System.out.println("Number of clients: " + clients.size() );
+			
+			for( Client c : clients.values() )
+			{
+				System.out.println( c );
 			}
 		}
-
-		// System.out.println("Closing sockets.");
-		// ss.close();
-		// socket.close();
 	}
 }
