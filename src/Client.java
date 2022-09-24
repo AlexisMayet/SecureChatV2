@@ -173,6 +173,11 @@ public class Client implements Serializable {
 			if (outB.getStatus() == Status.OFFLINE)
 				System.exit(0);
 
+			Output outC = (Output) objectInputStream.readObject();
+			System.out.println(outC.getStatus_description());
+			if (outC.getStatus() == Status.OFFLINE)
+				System.exit(0);
+
 
 		} catch (IOException | JsonParseException | ClassNotFoundException e) {
 			e.printStackTrace();

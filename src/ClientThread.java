@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -8,8 +11,11 @@ public class ClientThread extends Thread {
 
 	private Queue<String> actionsQueue = new LinkedList<String>();
 
-	public ClientThread(Client c) {
+	private ObjectOutputStream oos = null;
 
+	public ClientThread(Client c, ObjectOutputStream oos) {
+
+		this.oos = oos;
 		this.c = c;
 
 		// cargar las actions en la cola de acciones
@@ -54,14 +60,16 @@ public class ClientThread extends Thread {
 
 				System.out.println("ID:" + c.getID() + " - " + c.getCounter());
 
-				/*
-				try {
-					Thread.sleep(c.getDelay());
-				} catch (InterruptedException e) {
 
-					e.printStackTrace();
-				}
-				*/
+
+			}
+
+			try {
+				oos.writeObject(new Output(Status.OFFLINE, "Action complete. Goodbye."));
+				oos.close();
+				return;
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}

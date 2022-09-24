@@ -126,9 +126,8 @@ public class Server {
 				clients.put(client.getID(), client);
 
 
-				ClientThread ct = new ClientThread( client );
+				ClientThread ct = new ClientThread( client, objectOutputStream);
 				ct.start();
-
 
 
 				System.out.println("Number of clients: " + clients.size());
