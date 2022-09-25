@@ -1,6 +1,6 @@
 {
-	"id": "Imanol",
- 	"password": "Imagol",
+	"id": "Ruben",
+ 	"password": "Z%F%Uo^3XS6xyN0CdFpD",
  	"server":
  	{
  		"ip": "127.0.0.1",
@@ -12,8 +12,9 @@
  				"delay": "5",
  				"steps": 	
  				[
- 					"INCREASE 5",
- 					"DECREASE 2"
+ 					"INCREASE 0",
+ 					"DECREASE 10",
+					"INCREASE 11"
  				]
 		 }
  }

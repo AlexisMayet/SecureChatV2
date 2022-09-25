@@ -20,8 +20,6 @@ import java.util.Scanner;
 
 public class Server {
 
-	//run: run as java aplication
-
 	private static HashMap<String, Client> clients = new HashMap<String, Client>(13);
 
 	private static ArrayList<User> users = new ArrayList<>();

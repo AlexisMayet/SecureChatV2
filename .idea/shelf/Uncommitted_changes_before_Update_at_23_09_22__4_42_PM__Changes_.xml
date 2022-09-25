@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_23_09_22,_4_42_PM_[Changes]" date="1663944292810" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_09_22,_4_42_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 23/09/22, 4:42 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="classes/production/SecureChatV2/Server.class" />
+    <option name="AFTER_PATH" value="classes/production/SecureChatV2/Server.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_09_22,_4_42_PM_[Changes]/Server.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="classes/production/SecureChatV2/Client.class" />
+    <option name="AFTER_PATH" value="classes/production/SecureChatV2/Client.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_09_22,_4_42_PM_[Changes]/Client.class" />
+  </binary>
+</changelist>

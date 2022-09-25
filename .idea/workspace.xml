@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SecureChatV2:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56f3a841-0724-4915-84a5-723e5a82068c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="56f3a841-0724-4915-84a5-723e5a82068c" name="Changes" comment="enc.file missing">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/SecureChatV2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Encrypto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Encrypto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/client.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/client2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/client2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/enc.file" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,20 +68,25 @@
     <property name="go.format.on.save.advertiser.fired" value="true" />
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="SecureChatV2" />
@@ -111,9 +129,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.Encrypto" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.tripleDes" />
       </list>
     </recent_temporary>
@@ -160,7 +178,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664035235032</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Encryption incorporated with everything and i don't know how but it works.">
+      <created>1664117945948</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664117945948</updated>
+    </task>
+    <task id="LOCAL-00006" summary="enc.file missing">
+      <created>1664126111464</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664126111464</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +214,9 @@
     <MESSAGE value="Merge plus actions fix" />
     <MESSAGE value="Small fix on printing on client after action bug" />
     <MESSAGE value="Encrypting class using bouncing castle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Encrypting class using bouncing castle" />
+    <MESSAGE value="Encryption incorporated with everything and i don't know how but it works." />
+    <MESSAGE value="enc.file missing" />
+    <option name="LAST_COMMIT_MESSAGE" value="enc.file missing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
