@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56f3a841-0724-4915-84a5-723e5a82068c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/web3j_crypto.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Encrypto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecureChatV2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SecureChatV2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/SecureChatV2/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Encrypto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Encrypto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Encrypto">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="SecureChatV2" />
@@ -110,10 +111,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Encrypto" />
-        <item itemvalue="Application.tripleDes" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Encrypto" />
+        <item itemvalue="Application.tripleDes" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664031278914</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Encrypting class using bouncing castle">
+      <created>1664035235032</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664035235032</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +181,8 @@
     <MESSAGE value="Login system created and functional.&#10;Require the addition of three new libraries that can be found in the lib directory." />
     <MESSAGE value="Merge plus actions fix" />
     <MESSAGE value="Small fix on printing on client after action bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fix on printing on client after action bug" />
+    <MESSAGE value="Encrypting class using bouncing castle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Encrypting class using bouncing castle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

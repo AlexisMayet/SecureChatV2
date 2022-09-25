@@ -1,14 +1,22 @@
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.taimos.totp.TOTP;
 import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Hex;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Server {
 
@@ -18,11 +26,9 @@ public class Server {
 
 	private static ArrayList<User> users = new ArrayList<>();
 
-	public static void generate_users() throws FileNotFoundException
-	{
+	public static void generate_users() throws IOException, IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException {
 		JsonParser jsonParser = new JsonParser();
-		FileReader reader =  new FileReader("resources/users.json");
-		JsonArray users_object = (JsonArray) jsonParser.parse(reader);
+		JsonArray users_object = (JsonArray) jsonParser.parse(decrypt("resources/enc.file"));
 
 		int users_s = users_object.size();
 
@@ -35,6 +41,29 @@ public class Server {
 		}
 
 	}
+
+	private static String decrypt(String path) throws IOException, IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException {
+		Scanner reader = new Scanner(new File(path));
+		String output = "";
+		while (reader.hasNextLine())
+		{
+			String inString = reader.nextLine();
+			String[] sections = inString.split("\\|");
+			byte[] input = new byte[sections.length];
+
+			for (int i = 0; i < input.length; i++)
+			{
+				input[i] = (byte) Integer.parseInt(sections[i]);
+			}
+
+			output += Encrypto.getString(Encrypto.decode(input, "bananananana")) + "\n";
+
+		}
+		return output;
+
+	}
+
+
 
 	private static String generateNum(Client client) {
 		String secretKey = "";
@@ -86,7 +115,8 @@ public class Server {
 
 		try {
 			generate_users();
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException | IllegalBlockSizeException | NoSuchPaddingException | BadPaddingException | NoSuchAlgorithmException | NoSuchProviderException | InvalidKeyException e) {
+			e.printStackTrace();
 			System.out.println("Failed to read users.\nShutting down server.");
 			System.exit(0);
 		}

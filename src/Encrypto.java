@@ -1,3 +1,4 @@
+import org.bouncycastle.jcajce.provider.keystore.BCFKS;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.Arrays;
 
@@ -6,8 +7,10 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
+import java.util.Scanner;
 
 
 public class Encrypto {
@@ -18,7 +21,7 @@ public class Encrypto {
     private static final String UNICODE_FORMAT = "UTF8";
     public static final String PASSWORD_HASH_ALGORITHM = "SHA";
 
-    private static void init() {
+    public static void init() {
         Security.addProvider(new BouncyCastleProvider());
     }
 
@@ -38,13 +41,13 @@ public class Encrypto {
     /*
      * To do : decrypt plaintext using 3Des algorithm
      */
-    private static byte[] decode(byte[] input, String key) throws IllegalBlockSizeException, BadPaddingException,
+    public static byte[] decode(byte[] input, String key) throws IllegalBlockSizeException, BadPaddingException,
             NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException {
         init();
         Cipher decrypter = Cipher.getInstance(TRIPLE_DES_TRANSFORMATION, BOUNCY_CASTLE_PROVIDER);
-        //hash key to sha, and init decrypter
+
         decrypter.init(Cipher.DECRYPT_MODE, buildKey(key.toCharArray()));
-        //decrypt
+
         return decrypter.doFinal(input);
     }
 
@@ -60,29 +63,60 @@ public class Encrypto {
         return spec;
     }
 
-    private static byte[] getByte(String string) throws UnsupportedEncodingException {
-        return string.getBytes(UNICODE_FORMAT);
+    public static byte[] getByte(String string) throws UnsupportedEncodingException {
+        return string.getBytes(StandardCharsets.UTF_8);
     }
 
-    /*
-     * to do : byte to String
-     */
-    private static String getString(byte[] byteText) {
-        return new String(byteText);
+    public static String getString(byte[] byteText) {
+        return new String(byteText,StandardCharsets.UTF_8);
     }
 
 
     public static void main(String[] args) {
+        Scanner reader = null;
         try {
-            byte[] test = encode(getByte("IMANOL"),"hjsgfcgvhbjkn");
-            System.out.println(getString(test));
+            reader = new Scanner(new File("resources/users.json"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder o = new StringBuilder();
+        while (reader.hasNextLine())
+        {
+            String s = reader.nextLine();
+            try {
+                 byte[] temp = encode(getByte(s),"bananananana");
+                 for(byte b: temp)
+                 {
+                     int bInt = b & 0xff;
+                     System.out.println("Converting byte:" + b + " to:" + bInt);
+                     o.append(bInt).append("|");
+                 }
+                 o.append("\n");
 
-
-            System.out.println("Decrypted:");
-
-            byte[] test2 = decode(test,"hjsgfcgvhbjkn");
-            System.out.println(getString(test2));
-        } catch (IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | NoSuchProviderException | NoSuchPaddingException | InvalidKeyException | UnsupportedEncodingException e) {
+            } catch (IllegalBlockSizeException e) {
+                e.printStackTrace();
+            } catch (BadPaddingException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (NoSuchProviderException e) {
+                e.printStackTrace();
+            } catch (NoSuchPaddingException e) {
+                e.printStackTrace();
+            } catch (InvalidKeyException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        OutputStreamWriter writer = null;
+        try {
+            writer = new OutputStreamWriter(new FileOutputStream("resources/enc.file"));;
+            writer.write(o.toString());
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
