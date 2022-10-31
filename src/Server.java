@@ -146,10 +146,6 @@ public class Server {
 			}
 			else {
 				objectOutputStream.writeObject(new Output(Status.IDLE, "Correct password."));
-				if (Objects.equals(objectInputStream.readObject(), generateNum(client)))
-					objectOutputStream.writeObject(new Output(Status.IDLE, "Login successful.\nProceed with the action."));
-				else
-					objectOutputStream.writeObject(new Output(Status.OFFLINE, "Login unsuccessful."));
 
 				clients.put(client.getID(), client);
 

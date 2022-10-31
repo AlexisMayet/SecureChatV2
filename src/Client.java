@@ -88,16 +88,16 @@ public class Client implements Serializable {
 		return chooser.getSelectedFile().getPath();
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
-		// Previous
-		// -------------------------------------------------
-		// Socket socket = new Socket("localhost", 1234);
-		// Client client = new Client(socket, "Pepe");
-		// -------------------------------------------------
-
-
-		String filename = getFile();
+		String filename = "";
+		if(args.length != 0)
+		{
+			filename = args[0];
+		}
+		else {
+			throw new Exception("Json file not specified");
+		}
 
 		JsonParser jsonParser = new JsonParser();
 
@@ -166,17 +166,13 @@ public class Client implements Serializable {
 			if (outA.getStatus() == Status.OFFLINE)
 				System.exit(0);
 
-			objectOutputStream.writeObject(twoFac());
 
 			Output outB = (Output) objectInputStream.readObject();
 			System.out.println(outB.getStatus_description());
 			if (outB.getStatus() == Status.OFFLINE)
 				System.exit(0);
 
-			Output outC = (Output) objectInputStream.readObject();
-			System.out.println(outC.getStatus_description());
-			if (outC.getStatus() == Status.OFFLINE)
-				System.exit(0);
+
 
 
 		} catch (IOException | JsonParseException | ClassNotFoundException e) {
